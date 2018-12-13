@@ -5,7 +5,7 @@ import javax.faces.bean.*;
 
 import br.ufac.cidadon.entidades.*;
 import br.ufac.cidadon.repositorios.*;
-
+//teste
 @ManagedBean(name="administradorcontrolador")
 @SessionScoped
 public class AdministradorControlador {
