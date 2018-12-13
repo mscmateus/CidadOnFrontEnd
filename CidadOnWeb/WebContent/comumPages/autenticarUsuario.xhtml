@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type" content="initial-scale=1.0, user-scalable=no"/>
+	<title>CidadOn</title>
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<h1>Bem vindo ao CidadOn!</h1>
+			<p>Já possui uma conta? Faça seu login e continue colaborando com
+				sua cidade!</p>
+			<h:form>
+				<center>
+					<table>
+						<tr>
+							<td>E-mail:</td>
+							<td><h:inputText id="login" value="#{usuariocontrolador.login}">
+							</h:inputText>
+							<h:message for="login" styleClass="RED" /></td>
+							
+						</tr>
+						<tr>
+							<td>Senha:</td>
+							<td><h:inputSecret id="senha" value="#{usuariocontrolador.senha}"/></td>
+						</tr>
+					</table>
+					<h:commandButton action="#{usuariocontrolador.fazLogin}" value="login" />
+					<h:commandButton action="/index" value="voltar" />
+		
+				</center>
+			</h:form>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br />powered by Google
+			maps
+		</p>
+	</div>
+</h:body>
+</html>

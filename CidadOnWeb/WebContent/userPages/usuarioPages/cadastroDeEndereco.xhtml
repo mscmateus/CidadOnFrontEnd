@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type" content="initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6hGq5B1bTduHlMSce0J16l0XPNtqEySo"/>
+	<h:outputScript library="js" name="mapaAlteracao.js"/>
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<h:form id="formulario">
+				<center>
+					<h1>Edição de Usuário</h1>
+					<p>Falta pouco, selecione no mapa onde você mora</p>
+					<h:inputHidden id="latitude" value="#{usuariocontrolador.usuarioAlterado.latitudeResidencia}"/>
+					<h:inputHidden id="longitude" value="#{usuariocontrolador.usuarioAlterado.longitudeResidencia}"/>
+					<h:commandButton action="#{usuariocontrolador.atualizar}" value="confirmar" />
+					<h:commandButton action="/userPages/gerenciadorDeAcoes" value="cancelar" />
+						<div id="map_canvas" style="width: 100%px; height: 400px">
+							<h:outputScript>
+								initMap();
+							</h:outputScript>
+						</div>
+				</center>
+			</h:form>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br />powered by Google maps
+		</p>
+	</div>
+</h:body>
+</html>

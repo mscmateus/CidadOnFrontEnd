@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type"
+		content="initial-scale=1.0, user-scalable=no" />
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<h:form id="formulario">
+				<center>
+				<h1>Excluir Conta de Administrador</h1>
+				<p:messages id="msgs" />
+				<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel value=" Nome:"/>
+							<p:inputText id="nome" value="#{administradorcontrolador.administrador.nome}" disabled="true">
+								
+							</p:inputText>
+						<p:outputLabel  value="Sobrenome:"/>
+							<p:inputText id="sobreNome" value="#{administradorcontrolador.administrador.sobrenome}" disabled="true">
+							
+							</p:inputText>
+						<p:outputLabel value="E-mail:"/>
+							<p:inputText id="email"  value="#{administradorcontrolador.administrador.email}" disabled="true">
+							</p:inputText>
+				</h:panelGrid>
+						<p:separator/>
+				<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel value="Nome de administrador:"/>
+							<p:inputText id="nomeAdministrador" value="#{administradorcontrolador.administrador.nomeAdministrador}" disabled="true">
+							</p:inputText>
+							<p:message for="nomeAdministrador" redisplay="Senha" display="icon" />
+						<p:outputLabel value="Senha:"/>
+							<p:password id="senha1" value="#{administradorcontrolador.administrador.senha}" disabled="true">
+								<f:validateLength minimum="8"/>
+							</p:password>
+							<p:message for="senha1" redisplay="Senha" display="icon" />
+						<p:outputLabel value="Confirme a senha:"/>
+							<p:password id="senha2" value="#{administradorcontrolador.senha}" disabled="true">
+								<f:validateLength minimum="8"/>
+							</p:password>
+							<p:message for="senha2" showDetail="Valor" display="icon" />
+				</h:panelGrid>
+					<h:commandButton action="#{administradorcontrolador.excluir}" value="Confirmar exclusão" immediate="false"/>
+					<h:commandButton action="gerenciadorDeAcoes" value="Cancelar" ajax="false" immediate="true"/>
+				</center>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

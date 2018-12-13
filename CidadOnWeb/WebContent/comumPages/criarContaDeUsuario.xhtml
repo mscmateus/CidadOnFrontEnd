@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type"
+		content="initial-scale=1.0, user-scalable=no" />
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<h:form id="formulario">
+				<center>
+				<h1>Criar Conta de Usuário</h1>
+				<p>Muito bem, você já é quase um CidadOn, complete o cadastro!</p>
+				<p:messages id="msgs" />
+				<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel value="Nome:"/>
+							<p:inputText id="nome" value="#{usuariocontrolador.usuario.nome}" required="true" validatorMessage="campo nome obrigatorio."/>
+							<p:message for="nome" redisplay="Senha" display="icon" />
+						<p:outputLabel  value="Sobrenome:"/>
+							<p:inputText id="sobreNome" value="#{usuariocontrolador.usuario.sobrenome}" required="true" validatorMessage="O campo sobrenome não está prenchido"/>
+							<p:message for="sobreNome" redisplay="Senha" display="icon" />
+						<p:outputLabel value="Data de nascimento:"/>
+							<p:inputMask id="dataNascimento" value="#{usuariocontrolador.usuario.dataNascimento}" mask="99/99/9999"  required="true" validatorMessage="O campo data de nascimento não está prenchido">
+								<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+							</p:inputMask>
+							<p:message for="dataNascimento" redisplay="Senha" display="icon" />
+						<p:outputLabel value="CPF:"/>
+							<p:inputMask id="cpf" value="#{usuariocontrolador.usuario.cpf}" mask="999.999.999-99" required="true" validatorMessage="O campo cpf não está prenchido">
+								<f:validateLength minimum="11" validatorMessage="O CPF não possui 11 digitos"/>
+							</p:inputMask>
+							<p:message for="cpf" redisplay="Senha" display="icon" />
+						<p:outputLabel value="E-mail:"/>
+							<p:inputText id="email"  value="#{usuariocontrolador.usuario.email}" required="true" validatorMessage="O campo e-mail não está prenchido">
+							</p:inputText>
+							<p:message for="email" redisplay="Senha" display="icon" />
+				</h:panelGrid>
+						<p:separator/>
+				<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel value="Nome de usuário:"/>
+							<p:inputText id="nomeUsuario" value="#{usuariocontrolador.usuario.nomeUsuario}" required="true" validatorMessage="O campo nome de usuário não está prenchido">
+								<f:validateLength minimum = "6" maximum = "15" validatorMessage="O nome de usuário deve ter entre 6 a 15 caracteres"/>
+							</p:inputText>
+							<p:message for="nomeUsuario" display="icon" />
+						<p:outputLabel value="Senha:"/>
+							<p:password id="senha1" value="#{usuariocontrolador.usuario.senha}" required="true" validatorMessage="O campo senha não está prenchido">
+								<f:validateLength minimum="8" maximum = "15" validatorMessage="A senha deve ter deve ter entre 6 a 15 caracteres"/>
+							</p:password>
+							<p:message for="senha1" redisplay="Senha" display="icon" />
+						<p:outputLabel value="Confirme a senha:"/>
+							<p:password id="senha2" value="#{usuariocontrolador.senha}" required="true" validatorMessage="Repita a senha para a confirmação.">
+								<f:validateLength minimum="8" maximum = "15" validatorMessage="A senha deve ter deve ter entre 6 a 15 caracteres"/>
+							</p:password>
+							<p:message for="senha2" display="icon" />
+				</h:panelGrid>
+					<h:commandButton action="#{usuariocontrolador.confirmaSenha}" value="Continuar" immediate="false"/>
+					<h:commandButton action="/index" value="Cancelar" ajax="false" immediate="true"/>
+				</center>
+			</h:form>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br/>powered by Google maps
+		</p>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type"
+		content="initial-scale=1.0, user-scalable=no" />
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<center>
+				<h:form>
+					<h1>Excluir Agrave</h1> 
+					<h:outputLabel value="Gravidade: "/>
+					<h:selectOneMenu value="#{agravecontrolador.agrave.gravidade}" disable="true">
+						<f:selectItem
+							itemValue="#{agravecontrolador.agrave.gravidade}"
+							itemLabel="#{agravecontrolador.agrave.gravidade}"
+						/>
+					
+					</h:selectOneMenu>
+					<br />
+					<h:outputLabel value="Comentário: "/>
+					<br />
+					<h:inputTextarea cols="35" maxlength="210" style="resize: none"
+						rows="6" value="#{agravecontrolador.agrave.comentario}" disable="true"/>
+					<br />
+					
+					<h:commandButton action="#{agravecontrolador.remover}" value="Excluir agrave" />
+					<h:commandButton action="/userPages/inforProblema" value="Voltar" />
+				</h:form>
+			</center>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br />powered by Google maps
+		</p>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type"
+		content="initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6hGq5B1bTduHlMSce0J16l0XPNtqEySo" />
+	<h:outputScript library="js" name="mapaInsercaoProblema.js" />
+</h:head>
+<h:body style="height: 100%; margin: 0; ">
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<center>
+				<h:form id="formulario">
+					<h1>Gerenciar Problemas</h1>
+					<h:commandButton id="btnIncluir" action="#{problemacontrolador.novo}" value="Incluir Problema"/>
+					<h:commandButton id="btnEditar" action="#{problemacontrolador.editar}" value="Editar Problema"/>
+					<h:commandButton id="btnExcluir" action="#{problemacontrolador.exluir}" value="Excluir Problema"/>
+					<h:commandButton action="/userPages/gerenciadorDeAcoes" value="Voltar" /><br/>
+					<h:inputHidden id="idProblema" value="#{problemacontrolador.idDeSelecao}" />
+					<h:inputHidden id="latitude" value="#{problemacontrolador.latitude}" />
+					<h:inputHidden id="longitude" value="#{problemacontrolador.longitude}" />
+					<div id="map_canvas" style="width: 100%px; height: 400px"/>
+					
+					<h:inputHidden id="latitudeCasa" value="#{usuariocontrolador.usuario.latitudeResidencia}" disabled="true"/>
+					<h:inputHidden id="longitudeCasa" value="#{usuariocontrolador.usuario.longitudeResidencia}" disabled="true"/>
+						<h:outputScript>
+							initMap();
+						</h:outputScript>
+						#{problemacontrolador.problemasUsuarioParaMapa(usuariocontrolador.usuario)}
+				</h:form>
+			</center>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br />powered by Google
+			maps
+		</p>
+	</div>
+</h:body>
+</html>

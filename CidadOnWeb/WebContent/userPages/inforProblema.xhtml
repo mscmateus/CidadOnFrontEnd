@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type"
+		content="initial-scale=1.0, user-scalable=no" />
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<center>
+				<h:form id="formulario">
+					<h1>Informações sobre o Problema </h1>
+					<h:outputLabel value="Autor: "/><h:outputLabel value="#{problemacontrolador.problema.usuario.nomeUsuario}"/><br/>
+					<p:outputLabel value="Data de criação:"/>
+							<p:inputMask id="dataCriacao" value="#{problemacontrolador.problema.dataCriacao}" mask="99/99/9999" disabled="true">
+								<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+							</p:inputMask>
+					<p>ID do problema:</p><h:inputText id="idProblema" value="#{problemacontrolador.problema.identificador}" disabled="true"/><br/>
+					<p>tipo:</p>
+					<h:selectOneMenu disabled="true">
+						<f:selectItem
+						itemValue="#{problemacontrolador.problema.tipoDeProblema.indentificador}" 
+						itemLabel="#{problemacontrolador.problema.tipoDeProblema.titulo}"
+						/>
+					</h:selectOneMenu><br/>
+					<h:outputLabel value="#{problemacontrolador.problema.tipoDeProblema.descricao}"/><br/>
+					<br />
+					<p>Descrição:</p>
+					<br />
+					<h:inputTextarea cols="35" maxlength="210" style="resize: none"
+						rows="6" value="#{problemacontrolador.problema.descricao}" disabled="true"/>
+					<br/>
+					<h:commandButton action="consultarMapaDeProblemas" value="Voltar" />
+					<h1>Agraves </h1>
+					<h:outputLabel value="Média de agraves do problema: "/><p></p>
+					<p>O que você achou desse problema? Avalie-o para mostrar que ele o representa, ou não...</p>
+					<h:commandLink action="#{agravecontrolador.novo(usuariocontrolador.usuario.identificador,problemacontrolador.problema.identificador)}" value="Incluir agrave"/>
+					#{agravecontrolador.agravesPorUsuario(usuariocontrolador.usuario.identificador,problemacontrolador.problema.identificador)}
+					<h:dataTable value="#{agravecontrolador.agraves}" var="agrave" cellpadding="5" cellspacing="10">
+						<h:column>
+							<f:facet name="header">Comentário</f:facet>
+							#{agrave.comentario}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Autor</f:facet>
+							#{agrave.usuario.nomeUsuario}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Agravidade</f:facet>
+							#{agrave.gravidade}
+						</h:column>
+						<h:column>
+							<h:commandButton value="Editar" action="#{agravecontrolador.editar(agrave)}"/>
+							<h:commandButton value="Excluir" action="#{agravecontrolador.exluir(agrave)}"/>
+						</h:column>
+					</h:dataTable>
+					#{agravecontrolador.agravesPorNotUsuario(usuariocontrolador.usuario.identificador,problemacontrolador.problema.identificador)}
+					<h:dataTable value="#{agravecontrolador.agravesNot}" var="agrave" cellpadding="5" cellspacing="10">
+						<h:column>
+							#{agrave.comentario}
+						</h:column>
+						<h:column>
+							#{agrave.usuario.nomeUsuario}
+						</h:column>
+						<h:column>
+							#{agrave.gravidade}
+						</h:column>
+					</h:dataTable>
+					
+					<h1>Denúncias </h1>
+					<p>Esse problema tem algo de errado? Denúncie-o!</p>
+					<h:commandLink action="#{denunciacontrolador.novo(usuariocontrolador.usuario.identificador,problemacontrolador.problema.identificador)}" value="Denúnciar"/>
+					#{denunciacontrolador.denunciasPorUsuario(usuariocontrolador.usuario.identificador,problemacontrolador.problema.identificador)}
+					<h:dataTable value="#{denunciacontrolador.denuncias}" var="denuncia" cellpadding="5" cellspacing="10">
+						<h:column>
+							<f:facet name="header">Comentário</f:facet>
+							#{denuncia.descricao}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Autor</f:facet>
+							#{denuncia.usuario.nomeUsuario}
+						</h:column>
+						<h:column>
+							<h:commandButton value="Editar" action="#{denunciacontrolador.editar(denuncia)}"/>
+							<h:commandButton value="Excluir" action="#{denunciacontrolador.exluir(denuncia)}"/>
+						</h:column>
+					</h:dataTable>
+					#{denunciacontrolador.denunciasPorNotUsuario(usuariocontrolador.usuario.identificador,problemacontrolador.problema.identificador)}
+					<h:dataTable value="#{denunciacontrolador.denunciasNot}" var="denuncia" cellpadding="5" cellspacing="10">
+						<h:column>
+							#{denuncia.descricao}
+						</h:column>
+						<h:column>
+							#{denuncia.usuario.nomeUsuario}
+						</h:column>
+					</h:dataTable>
+				</h:form>
+				
+			</center>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br />powered by Google
+			maps
+		</p>
+	</div>
+</h:body>
+</html>

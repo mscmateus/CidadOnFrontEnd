@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	>
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type"
+		content="initial-scale=1.0, user-scalable=no" />
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6hGq5B1bTduHlMSce0J16l0XPNtqEySo" />
+	<h:outputScript library="js" name="mapaConsulta.js" />
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<h:form id="formulario">
+				<center>
+					<h1>Consultar Mapa de Problemas</h1>
+					<h:outputLabel value="Id do problema a ser buscado:" />
+					<h:inputText value="#{problemacontrolador.idDeBusca}" />
+					<h:outputLabel value="Filtrar por:" />
+					<h:selectOneMenu value="#{problemacontrolador.tipoDeProblemaCodigo}" onchange="#{problemacontrolador.problemasParaMapa()}">
+						<f:selectItem
+							itemValue="0" 
+							itemLabel="nenhum"
+						/>
+						<f:selectItems  
+							value ="#{tipoDeProblemaControlador.tiposDeProblemas}"
+							var = "tipodeproblema"
+							itemValue="#{tipodeproblema.indentificador}" 
+							itemLabel="#{tipodeproblema.titulo}"
+						/>
+					</h:selectOneMenu><br/>
+					<h:commandButton action="#{problemacontrolador.pesquisa}" value="Pesquisar Problema" />
+					<h:commandButton id="btnInfoProblema" action="#{problemacontrolador.pegarInformacoesProblema}" value="Ver informações do problema" />
+					<h:commandButton action="gerenciadorDeAcoes" value="voltar" />
+					<div id="map_canvas" style="width: 100% px; height: 400px">
+						<h:outputScript>
+							initMap();
+							geolocalization();
+						</h:outputScript>
+						#{problemacontrolador.problemasParaMapa()}
+					</div>
+					<h:inputHidden id="idProblema" value="#{problemacontrolador.idDeSelecao}"/>
+				</center>
+			</h:form>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br />powered by Google
+			maps
+		</p>
+	</div>
+</h:body>
+</html>

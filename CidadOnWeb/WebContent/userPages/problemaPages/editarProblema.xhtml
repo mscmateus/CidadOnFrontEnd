@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type"
+		content="initial-scale=1.0, user-scalable=no" />
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<center>
+				<h:form id="formulario">
+					<h1>Editar Problema</h1>
+					<p:outputLabel value="Data de criação:"/>
+							<p:inputMask id="dataCriacao" value="#{problemacontrolador.problema.dataCriacao}" mask="99/99/9999">
+								<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+							</p:inputMask><br/>
+					<p>ID do problema:</p><h:inputText id="idProblema" value="#{problemacontrolador.problema.identificador}" disabled="true"/><br/>
+					<p>tipo:</p>
+					<h:selectOneMenu value="#{problemacontrolador.tipoDeProblemaCodigo}" >
+						<f:selectItems  
+						value ="#{tipoDeProblemaControlador.tiposDeProblemas}" 
+						var="tipodeproblema" 
+						itemValue="#{tipodeproblema.indentificador}" 
+						itemLabel="#{tipodeproblema.titulo}"
+						/>
+					</h:selectOneMenu><br/>
+					<h:outputLabel value="#{problemacontrolador.problema.tipoDeProblema.descricao}"/><br/>
+					<p>Descrição:</p>
+					<br />
+					<h:inputTextarea cols="35" maxlength="210" style="resize: none"
+						rows="6" value="#{problemacontrolador.problema.descricao}"/>
+					<br />
+					<h:commandButton action="#{problemacontrolador.atualizar}" value="Confirmar Edição" />
+					<h:commandButton action="gerenciarProblemas" value="Voltar" />
+				</h:form>
+			</center>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br />powered by Google
+			maps
+		</p>
+	</div>
+</h:body>
+</html>

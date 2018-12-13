@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type" content="initial-scale=1.0, user-scalable=no"/>
+	<title>CidadOn</title>
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<h1>Login Administrativo CidadOn!</h1>
+			<h:form>
+				<center>
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel value="E-mail:"/>
+						<h:inputText id="login" value="#{administradorcontrolador.login}"/>
+						<h:outputLabel value="senha:"/>
+						<h:inputSecret id="senha" value="#{administradorcontrolador.senha}"/>
+						<h:commandButton action="#{administradorcontrolador.fazLogin}" value="login" />
+						<h:commandButton action="/index" value="voltar" />
+					</h:panelGrid>
+				</center>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

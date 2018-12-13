@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<h:head>
+	<meta name="viewport" http-equiv="Content-Type"
+		content="initial-scale=1.0, user-scalable=no" />
+</h:head>
+<h:body>
+	<h1>CidadON</h1>
+	<div>
+		<div>
+			<h:form>
+				<center>
+				<h1>Excluir Conta de Usuário</h1>
+				<p>Você realmente quer se tornar um cidadOff?</p>
+				<h:panelGrid columns="2">
+						<p:outputLabel value="Nome:"/>
+							<p:inputText id="nome" value="#{usuariocontrolador.usuario.nome}"  disabled="true" />
+						<p:outputLabel  value="Sobrenome:"/>
+							<p:inputText id="sobreNome" value="#{usuariocontrolador.usuario.sobrenome}"  disabled="true"/>
+						<p:outputLabel  value="Data de Nascimento:"/>					<p:outputLabel value="Data de nascimento:"/>
+							<p:inputMask id="dataNascimento" value="#{usuariocontrolador.usuarioAlterado.dataNascimento}" mask="99/99/9999" disabled="true">
+								<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+							</p:inputMask>
+						<p:outputLabel value="CPF:"/>
+							<p:inputMask id="cpf" value="#{usuariocontrolador.usuario.cpf}" mask="999.999.999-99"  disabled="true"/>
+						<p:outputLabel value="E-mail:"/>
+							<p:inputText id="email"  value="#{usuariocontrolador.usuario.email}"  disabled="true"/>
+				</h:panelGrid>
+						<p:separator/>
+				<h:panelGrid columns="3">
+						<p:outputLabel value="Nome de usuário:"/>
+							<p:inputText id="nomeUsuario" value="#{usuariocontrolador.usuario.nomeUsuario}"  disabled="true"/>
+				</h:panelGrid>
+					<h:commandButton action="#{usuariocontrolador.excluir}" value="Confirmar exclusão" />
+					<h:commandButton action="/userPages/gerenciadorDeAcoes" value="Cancelar"  ajax="false" immediate="true" />
+				</center>
+			</h:form>
+		</div>
+		<p>
+			Copyright &copy; 2018 - by Argos Software<br/>powered by Google maps
+		</p>
+	</div>
+</h:body>
+</html>
