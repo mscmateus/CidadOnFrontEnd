@@ -29,15 +29,25 @@ public class TipoDeProblemaControlador {
 		tpr = new TipoDeProblemaRepositorio();
 	}
 
-	public void recuperaImagem() throws IOException {
-		if(tipoDeProblemaCodigo !=0){
-			File file = new File("/home/mateus/git/CidadOnWeb/CidadOnWeb/WebContent/resources/img/img.png");
-			System.out.println(file.isFile());
-			FileOutputStream fos = new FileOutputStream(file);
-			fos.write(tipoDeProblema.getIcone());
-			fos.close();			
-		}
-	}
+//	public void recuperaImagems() throws IOException {
+//		File folder = new File("/home/mateus/git/CidadOnFrontEnd/CidadOnWeb/WebContent/resources/img/icones");
+//		if (folder.isDirectory()) {
+//			File[] sun = folder.listFiles();
+//			for (File toDelete : sun) {
+//				toDelete.delete();
+//			}
+//		}
+//		List <TipoDeProblema> imagens = tpr.recuperarTodos();
+//		FileOutputStream fos;
+//		File file;
+//		for(TipoDeProblema tdp : imagens) {
+//			System.out.println(tdp.getTitulo());
+//			file = new File("/home/mateus/git/CidadOnFrontEnd/CidadOnWeb/WebContent/resources/img/icones/"+tdp.getIndentificador()+".png");
+//			fos = new FileOutputStream(file);
+//			fos.write(tdp.getIcone());
+//			fos.close();	
+//		}
+//	}
 	
 	public UploadedFile getIconUp() {
 		return iconUp;
@@ -54,7 +64,6 @@ public class TipoDeProblemaControlador {
 		return tipoDeProblema;
 	}
 	public void setTipoDeProblema(TipoDeProblema tipoDetipoDeProblema) throws IOException {
-		recuperaImagem();
 		this.tipoDeProblema = tipoDetipoDeProblema;
 	}
 	public List<TipoDeProblema> getTiposDeProblemas() {
@@ -71,7 +80,6 @@ public class TipoDeProblemaControlador {
 	}
 	public void setTipoDeProblemaCodigo(int tipoDeProblemaCodigo) throws IOException {
 		tipoDeProblema = tpr.recuperar(tipoDeProblemaCodigo);
-		recuperaImagem();
 		this.tipoDeProblemaCodigo = tipoDeProblemaCodigo;
 	}
 	//Para inclusão
