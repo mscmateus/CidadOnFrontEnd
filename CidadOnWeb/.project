@@ -3,6 +3,7 @@
 	<name>CidadOnWeb</name>
 	<comment></comment>
 	<projects>
+		<project>CidadOn</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

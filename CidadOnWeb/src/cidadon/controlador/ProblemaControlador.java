@@ -110,7 +110,7 @@ public class ProblemaControlador {
 		pesquisa();
 		String a = "<script>";
 		for(Problema p : problemas) {
-			a += "fazPonto({lat: "+p.getLatitude()+",lng: "+p.getLongitude()+"},'"+p.getIdentificador()+"',"+problemas.indexOf(p)+");\n";
+			a += "fazPonto({lat: "+p.getLatitude()+",lng: "+p.getLongitude()+"},'"+p.getIdentificador()+"',"+problemas.indexOf(p)+",'"+p.getIdentificador()+".png');\n";
 		}
 		a+="</script>";
 		return a;
@@ -120,7 +120,7 @@ public class ProblemaControlador {
 		problemas = pr.recuperarProblemasPorUsuario(u.getIdentificador());
 		String a = "<script>";
 		for(Problema p : problemas) {
-			a += "fazTodosPontos({lat: "+p.getLatitude()+",lng: "+p.getLongitude()+"},'"+p.getIdentificador()+"',"+problemas.lastIndexOf(p)+");\n";
+			a += "fazTodosPontos({lat: "+p.getLatitude()+",lng: "+p.getLongitude()+"},'"+p.getIdentificador()+"',"+problemas.lastIndexOf(p)+",'\"+p.getIdentificador()+\".png');\n";
 		}
 		a+="</script>";
 		return a;

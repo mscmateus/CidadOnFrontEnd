@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="img"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-8-oracle">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -21,11 +20,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/GMaps"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CidadOn"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PrimeFace">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/CidadOn"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
