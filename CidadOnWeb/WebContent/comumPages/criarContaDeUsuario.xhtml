@@ -16,46 +16,93 @@
 				<center>
 				<h1>Criar Conta de Usuário</h1>
 				<p>Muito bem, você já é quase um CidadOn, complete o cadastro!</p>
-				<p:messages id="msgs" />
+				<!--  <p:messages id="msgs" />-->
 				<h:panelGrid columns="3" cellpadding="5">
 						<p:outputLabel value="Nome:"/>
-							<p:inputText id="nome" value="#{usuariocontrolador.usuario.nome}" required="true" validatorMessage="campo nome obrigatorio."/>
-							<p:message for="nome" redisplay="Senha" display="icon" />
+							<p:inputText id="nome" value="#{usuariocontrolador.usuario.nome}"
+							required="true"
+							placeholder="Insira o seu primeiro nome"
+							label="Nome"
+							requiredMessage="Campo obrigatório!"
+							validatorMessage="Não deve ser nulo"
+							converterMessage="Deve ser texto!"/>
+							<h:message for="nome" style="color:red" />
 						<p:outputLabel  value="Sobrenome:"/>
-							<p:inputText id="sobreNome" value="#{usuariocontrolador.usuario.sobrenome}" required="true" validatorMessage="O campo sobrenome não está prenchido"/>
-							<p:message for="sobreNome" redisplay="Senha" display="icon" />
+							<p:inputText id="sobreNome" value="#{usuariocontrolador.usuario.sobrenome}"
+							required="true"
+							placeholder="Insira o seu sobrenome"
+							label="sobreNome"
+							requiredMessage="Campo obrigatório, o campo sobrenome não está prenchido!"
+							validatorMessage="O campo sobrenome não está prenchido"
+							converterMessage="Deve ser texto!"/>
+							<h:message for="sobreNome" style="color:red" />
 						<p:outputLabel value="Data de nascimento:"/>
-							<p:inputMask id="dataNascimento" value="#{usuariocontrolador.usuario.dataNascimento}" mask="99/99/9999"  required="true" validatorMessage="O campo data de nascimento não está prenchido">
+							<p:inputMask id="dataNascimento" value="#{usuariocontrolador.usuario.dataNascimento}" mask="99/99/9999" 							required="true"
+							placeholder="Insira a data de nascimento"
+							label="dataNascimento"
+							requiredMessage="Campo obrigatório, o campo Data de nascimento não está prenchido!"
+							validatorMessage="O campo sobrenome não está prenchido"
+							converterMessage="Deve ser data!">						
 								<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
 							</p:inputMask>
-							<p:message for="dataNascimento" redisplay="Senha" display="icon" />
+							<h:message for="dataNascimento" style="color:red" />
 						<p:outputLabel value="CPF:"/>
-							<p:inputMask id="cpf" value="#{usuariocontrolador.usuario.cpf}" mask="999.999.999-99" required="true" validatorMessage="O campo cpf não está prenchido">
+							<p:inputMask id="cpf" value="#{usuariocontrolador.usuario.cpf}" mask="999.999.999-99"
+							required="true"
+							placeholder="Insira o CPF"
+							label="cpf"
+							requiredMessage="Campo obrigatório, o campo CPF não está prenchido!"
+							validatorMessage="O campo sobrenome não está prenchido"
+							converterMessage="Deve ser data!">	
 								<f:validateLength minimum="11" validatorMessage="O CPF não possui 11 digitos"/>
+							
 							</p:inputMask>
-							<p:message for="cpf" redisplay="Senha" display="icon" />
+							<h:message for="cpf" style="color:red" />
 						<p:outputLabel value="E-mail:"/>
-							<p:inputText id="email"  value="#{usuariocontrolador.usuario.email}" required="true" validatorMessage="O campo e-mail não está prenchido">
-							</p:inputText>
-							<p:message for="email" redisplay="Senha" display="icon" />
+							<p:inputText id="email"  value="#{usuariocontrolador.usuario.email}"
+							required="true"
+							placeholder="Insira o seu email"
+							label="email"
+							requiredMessage="Campo obrigatório, o campo e-mail não está prenchido!"
+							validatorMessage="O campo email não está prenchido"
+							converterMessage="Deve ser numeros inteiros!"/>
+							<h:message for="email" style="color:red" />
 				</h:panelGrid>
 						<p:separator/>
 				<h:panelGrid columns="3" cellpadding="5">
 						<p:outputLabel value="Nome de usuário:"/>
-							<p:inputText id="nomeUsuario" value="#{usuariocontrolador.usuario.nomeUsuario}" required="true" validatorMessage="O campo nome de usuário não está prenchido">
-								<f:validateLength minimum = "6" maximum = "15" validatorMessage="O nome de usuário deve ter entre 6 a 15 caracteres"/>
-							</p:inputText>
-							<p:message for="nomeUsuario" display="icon" />
+							<p:inputText id="nomeUsuario" value="#{usuariocontrolador.usuario.nomeUsuario}"
+							required="true"
+							placeholder="Insira o seu email"
+							label="nomeUsuario"
+							requiredMessage="Campo obrigatório, o campo nome de usuário não está prenchido!"
+							validatorMessage="O campo nome de usuário não está prenchido"
+							converterMessage="Deve ser texto!">
+							<f:validateLength minimum = "6" maximum = "15" validatorMessage="O nome de usuário deve ter entre 6 a 15 caracteres"/>
+								</p:inputText>
+							<h:message for="nomeUsuario" style="color:red" />
 						<p:outputLabel value="Senha:"/>
-							<p:password id="senha1" value="#{usuariocontrolador.usuario.senha}" required="true" validatorMessage="O campo senha não está prenchido">
+							<p:password id="senha1" value="#{usuariocontrolador.usuario.senha}"
+							required="true"
+							placeholder="Insira uma senha entre 6 e 15 caracteres"
+							label="senha1"
+							requiredMessage="Campo obrigatório, o campo senha não está prenchido!"
+							validatorMessage="O campo senha não está prenchido"
+							converterMessage="Deve ter entre 6 e 15 caracteres">
 								<f:validateLength minimum="8" maximum = "15" validatorMessage="A senha deve ter deve ter entre 6 a 15 caracteres"/>
 							</p:password>
-							<p:message for="senha1" redisplay="Senha" display="icon" />
+							<h:message for="senha1" style="color:red" />
 						<p:outputLabel value="Confirme a senha:"/>
-							<p:password id="senha2" value="#{usuariocontrolador.senha}" required="true" validatorMessage="Repita a senha para a confirmação.">
+							<p:password id="senha2" value="#{usuariocontrolador.senha}" 
+							required="true"
+							placeholder="Insira sua senha novamente"
+							label="senha2"
+							requiredMessage="Campo obrigatório, o campo senha não está prenchido!"
+							validatorMessage="O campo senha não está prenchido"
+							converterMessage="Deve ter entre 6 e 15 caracteres">
 								<f:validateLength minimum="8" maximum = "15" validatorMessage="A senha deve ter deve ter entre 6 a 15 caracteres"/>
 							</p:password>
-							<p:message for="senha2" display="icon" />
+							<h:message for="senha2" style="color:red" />
 				</h:panelGrid>
 					<h:commandButton action="#{usuariocontrolador.confirmaSenha}" value="Continuar" immediate="false"/>
 					<h:commandButton action="/index" value="Cancelar" ajax="false" immediate="true"/>
